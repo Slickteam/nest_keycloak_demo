@@ -8,15 +8,16 @@ import {
   AuthGuard,
 } from 'nest-keycloak-connect';
 import { APP_GUARD } from '@nestjs/core';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     KeycloakConnectModule.register({
-      authServerUrl: 'https://keycloak.slickteam.fr/auth',
-      realm: 'slick-dev',
-      clientId: 'nest-demo',
-      secret:
-        'MIICoTCCAYkCBgGAlJTppjANBgkqhkiG9w0BAQsFADAUMRIwEAYDVQQDDAluZXN0LWRlbW8wHhcNMjIwNTA1MTQxNTI4WhcNMzIwNTA1MTQxNzA4WjAUMRIwEAYDVQQDDAluZXN0LWRlbW8wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCEbvGBRr1XSrLX4j4N+XZPTpV9VjSKwlsK3EcFqsqFXNjc46R9kRWFb2WxgNZ7OIWcgSgDTuNXGF8/2Y159g3FWrsQ7J6+6Is9zkoamDkXp2lmXpXDpDh36TtHE1m08hVe8LExJhSWcviHln+ECKW5PjJndzI1IHfrL+31b0Is2iKBtVwkfXHrxpmyNSV/bg4OHfRbLf4ZaJszR3ql1yzF3fDeEkKkENvZB9hUEMdNx2za7Z0tHBP2xSMFTPcUeXzMKS/sqBm4H2c4FrSWanKXwWd+fX7LTBPq+/bkvRAp7zC/MzWTbMxAWZAAEW7P5IVBNtkJmrFa9Wa4Xfv7BV3/AgMBAAEwDQYJKoZIhvcNAQELBQADggEBACZznDN7nRxVJtD4jk9XZ3WgPStgsuaTitTq+JzS9LVs1HE1lYOEPnzjni+PkvvIUYJK+qtRiuXnnXe4IifRG3xloCcVsJYnf6VoDJUhAA5E5OPPXBTLqzpdQJZLXlfl/iW9WLwblUPKsJd1BQH3U/IxXyjKDPhf1mc1wOrf9BJI1l/QVeacFP5a5VBR3omXkD++WnUEJOhqKeicBEJ3CoeBv1WQTKwBkNRf4Cb55BlDzbTiPvBpMhWuqqdOfACHHWl7QI8R2VcBrZM8FSWJcbpgtGSJk7BVfKzgk473ezRY4qJHM0LX+fN7wUqY1Kga+SnzIma3MRzgFLyJcVJZ4Mo=',
+      authServerUrl: process.env.KEYCLOAK_AUTH_SERVER_URL,
+      realm: process.env.KEYCLOAK_REALM,
+      clientId: process.env.KEYCLOAK_CLIENT_ID,
+      secret: process.env.KEYCLOAK_CLIENT_SECRET,
       // Secret key of the client taken from keycloak server
     }),
   ],
