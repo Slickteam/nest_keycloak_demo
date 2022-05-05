@@ -24,7 +24,9 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Nest project with keycloak and jwt to manage authorization on resources
+
+![Untitled Diagram drawio](https://user-images.githubusercontent.com/59962729/166953072-429bb349-4ca3-4615-8018-9902dc66895f.png)
 
 ## Installation
 
